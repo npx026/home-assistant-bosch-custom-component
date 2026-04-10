@@ -20,13 +20,14 @@ from homeassistant.const import CONF_ACCESS_TOKEN, CONF_ADDRESS, CONF_PASSWORD
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.network import get_url, NoURLAvailableError
 
-from . import create_notification_firmware, OAUTH_CALLBACK_PATH
+from . import create_notification_firmware
 from .const import (
     ACCESS_KEY,
     ACCESS_TOKEN,
     CONF_DEVICE_TYPE,
     CONF_PROTOCOL,
     DOMAIN,
+    OAUTH_CALLBACK_PATH,
     REFRESH_TOKEN,
     TOKEN_EXPIRES_AT,
     UUID,

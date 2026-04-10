@@ -76,6 +76,7 @@ from .const import (
     GATEWAY,
     INTERVAL,
     NOTIFICATION_ID,
+    OAUTH_CALLBACK_PATH,
     RECORDING_INTERVAL,
     REFRESH_TOKEN,
     SCAN_INTERVAL,
@@ -134,8 +135,6 @@ DATA_CONFIGS = "bosch_configs"
 _LOGGER = logging.getLogger(__name__)
 
 HOUR = timedelta(hours=1)
-
-OAUTH_CALLBACK_PATH = "/api/bosch_easycontrol/callback"
 
 # HTML served to the browser after the OAuth redirect lands on HA.
 # window.close() works when the tab was opened programmatically (desktop,

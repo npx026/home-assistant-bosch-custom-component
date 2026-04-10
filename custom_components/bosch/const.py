@@ -98,3 +98,5 @@ CIRCUITS_SENSOR_NAMES = {
 
 BINARY_SENSOR = "binary_sensor"
 LAST_RESET = "last_reset"
+
+OAUTH_CALLBACK_PATH = "/api/bosch_easycontrol/callback"
