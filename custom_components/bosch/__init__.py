@@ -1,6 +1,17 @@
 """Platform to control a Bosch IP thermostats units."""
 from __future__ import annotations
 
+import os
+import sys
+
+# bosch_thermostat_client is bundled inside this component directory.
+# Add the component dir to sys.path so absolute imports like
+# `from bosch_thermostat_client import ...` resolve correctly on any
+# HA installation, including HAOS which has no git for pip git+ URLs.
+_COMPONENT_DIR = os.path.dirname(__file__)
+if _COMPONENT_DIR not in sys.path:
+    sys.path.insert(0, _COMPONENT_DIR)
+
 import asyncio
 import logging
 import random

@@ -1,0 +1,273 @@
+{
+  "versionFirmware": "02.22.00",
+  "date_format": "%Y-%m-%dT%H:%M:%S",
+  "heatingCircuits": {
+    "hastates": [
+      {
+        "haname": "off",
+        "boschname": ["off"]
+      },
+      {
+        "haname": "heat",
+        "boschname": ["manual"]
+      },
+      {
+        "haname": "auto",
+        "boschname": ["clock"]
+      }
+    ],
+    "min_ref": "setpoint1",
+    "max_ref": "setpoint1",
+    "schedule": {
+      "program": "/heatingCircuits/{}/switchPrograms/{}",
+      "key_day": "dayOfWeek",
+      "key_setpoint": "setpoint",
+      "key_time": "time",
+      "switch_points": "switchPoints"
+    },
+    "mode_to_setpoint": {
+      "manual": {
+        "setpoint": "setpoint2",
+        "setpoint_write": "setpoint1",
+        "type": "manual"
+      },
+      "clock": {
+        "setpoint": "setpoint2",
+        "type": "auto"
+      }
+    },
+    "refs": {
+      "current_temp": {
+        "id": "roomtemperature",
+        "name": "Room temperature",
+        "type": "regular"
+      },
+      "operation_mode": {
+        "id": "usermode",
+        "name": "Operation mode",
+        "type": "operation_mode"
+      },
+      "setpoint1": {
+        "id": "temperatureRoomManual",
+        "name": "Manual room setpoint",
+        "type": "setpoint"
+      },
+      "setpoint2": {
+        "id": "temperatureRoomSetpoint",
+        "name": "Auto room setpoint",
+        "type": "setpoint"
+      },
+      "manual_override": {
+        "id": "manualTempOverride/temperature",
+        "name": "Auto room setpoint to write",
+        "type": "setpoint"
+      },
+      "manual_status": {
+        "id": "manualTempOverride/status",
+        "name": "Auto room setpoint to write",
+        "type": "regular"
+      },
+      "status": {
+        "id": "control",
+        "name": "Heating circuit status",
+        "type": "regular"
+      }
+    },
+    "switches": {
+      "holidayModeActivated": {
+        "id": "holidayMode/activated",
+        "name": "Activate Holiday Mode",
+        "turn_on": "on",
+        "turn_off": "off",
+        "type": "binary"
+      },
+      "holidayModeTemperature": {
+        "id": "holidayMode/temperature",
+        "name": "Holiday Mode Temp",
+        "type": "number"
+      }
+    },
+    "sensors": {
+      "holidayModeActive": {
+        "id": "holidayMode/status",
+        "name": "Holiday Mode Active",
+        "type": "binary"
+      },
+      "pband": {
+        "id": "pband",
+        "name": "pband"
+      },
+      "powerSetpoint": {
+        "id": "powerSetpoint",
+        "name": "powerSetpoint"
+      },
+      "actualSupplyTemperature": {
+        "id": "actualSupplyTemperature",
+        "name": "actualSupplyTemperature",
+        "state_class": "measurement",
+        "device_class": "temperature"
+      },
+      "supplyTemperatureSetpoint": {
+        "id": "supplyTemperatureSetpoint",
+        "name": "supplyTemperatureSetpoint",
+        "state_class": "measurement",
+        "device_class": "temperature"
+      }
+    }
+  },
+  "dhwCircuits": {
+    "hastates": [
+      {
+        "haname": "clock",
+        "boschname": ["clock"]
+      },
+      {
+        "haname": "manual",
+        "boschname": ["manual"]
+      }
+    ],
+    "min_ref": "setpoint1",
+    "max_ref": "setpoint1",
+    "mode_to_setpoint": {
+      "Off": {
+        "setpoint": null,
+        "type": "off"
+      },
+      "manual": {
+        "setpoint": null,
+        "type": "manual"
+      },
+      "auto": {
+        "setpoint": null,
+        "type": "auto"
+      }
+    },
+    "refs": {
+      "operation_mode": {
+        "id": "dhwOperationManualMode",
+        "name": "Operation mode",
+        "type": "operation_mode"
+      },
+      "status": {
+        "id": "dhwOperationState",
+        "name": "DHW status",
+        "type": "regular"
+      },
+      "activeProgram": {
+        "id": "programs",
+        "name": "Active Switch Program",
+        "type": "activeProgram"
+      }
+    },
+    "sensors": {
+      "thermaldesinfectlastResult": {
+        "id": "thermaldesinfect/lastResult",
+        "name": "thermaldesinfect lastResult"
+      },
+      "thermaldesinfectstate": {
+        "id": "thermaldesinfect/state",
+        "name": "thermaldesinfect state"
+      },
+      "thermaldesinfectlasttime": {
+        "id": "thermaldesinfect/time",
+        "name": "thermaldesinfect time"
+      },
+      "thermaldesinfectlastweekDay": {
+        "id": "thermaldesinfect/weekDay",
+        "name": "thermaldesinfect weekDay"
+      }
+    },
+    "switches": {
+      "dhwOffDuringAbsence": {
+        "id": "dhwOffDuringAbsence",
+        "name": "dhwOffDuringAbsence",
+        "turn_on": "true",
+        "turn_off": "false",
+        "type": "binary"
+      },
+      "dhwOffDuringNight": {
+        "id": "dhwOffDuringNight",
+        "name": "dhwOffDuringNight",
+        "turn_on": "true",
+        "turn_off": "false",
+        "type": "binary"
+      },
+      "extraDhwStatus": {
+        "id": "extraDhw/status",
+        "name": "Extra hot water",
+        "turn_on": "on",
+        "turn_off": "off",
+        "type": "binary"
+      },
+      "extraDhwDuration": {
+        "id": "extraDhw/duration",
+        "name": "Extra hot water durtaion",
+        "type": "number",
+        "defaultStep": 1.0
+      },
+      "thermaldesinfectState": {
+        "id": "thermaldesinfect/state",
+        "name": "thermaldesinfect state",
+        "turn_on": "on",
+        "turn_off": "off",
+        "type": "binary"
+      },
+      "thermaldesinfecttime": {
+        "id": "thermaldesinfect/time",
+        "name": "thermaldesinfect time",
+        "type": "number",
+        "defaultStep": 1.0
+      }
+    }
+  },
+  "sensors": {
+    "outdoor_t1": {
+      "id": "/system/sensors/temperatures/outdoor_t1",
+      "name": "Outdoor temperature",
+      "state_class": "measurement",
+      "device_class": "temperature"
+    },
+    "dhwa_flow": {
+      "id": "/system/sensors/flow/dhwA/status",
+      "name": "Flow control"
+    },
+    "system_pressure": {
+      "id": "/system/appliance/systemPressure",
+      "name": "System pressure"
+    },
+    "actualPower": {
+      "id": "/system/appliance/actualPower",
+      "name": "Actual power"
+    },
+    "boilermaintenancerequest": {
+      "id": "/system/appliance/boilermaintenancerequest",
+      "name": "Boiler maintenance"
+    },
+    "yearTotal": {
+      "id": "/ecus/rrc/recordings/yearTotal",
+      "name": "Total year usage",
+      "state_class": "total",
+      "device_class": "energy"
+    },
+    "notifications": {
+      "id": "/system/appliance/displaycode",
+      "cause": "/system/appliance/causecode",
+      "name": "Notifications"
+    },
+    "ecus_recording": {
+      "name": "Gas usage",
+      "id": "/ecus/rrc/recordings/gasusage",
+      "pagination": "/ecus/rrc/recordings/gasusagePointer",
+      "state_class": "total",
+      "device_class": "energy"
+    }
+  },
+  "switches": {
+    "summerSwitchOff": {
+      "id": "/ecus/rrc/weatherDependent/summerSwitchOff",
+      "name": "summerSwitchOff",
+      "type": "number",
+      "defaultStep": 1.0
+    }
+  }
+}

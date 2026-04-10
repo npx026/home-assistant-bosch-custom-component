@@ -1,0 +1,16 @@
+{
+  "versionFirmwarePath": "/gateway/versionFirmware",
+  "gateway": {
+    "uuid": "/gateway/uuid",
+    "versionFirmware": "/gateway/versionFirmware",
+    "systemInfo": "/gateway/versionHardware",
+    "dateTime": "/gateway/DateTime"
+  },
+  "models": {
+    "iCom_Low_v1": {
+      "value": "iCom_Low_v1",
+      "name": "MBLAN Controller",
+      "type": "mblan"
+    }
+  }
+}

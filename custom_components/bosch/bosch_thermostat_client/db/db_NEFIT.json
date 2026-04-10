@@ -1,0 +1,67 @@
+{
+  "versionFirmwarePath": "/gateway/versionFirmware",
+  "gateway": {
+    "uuid": "/gateway/uuid",
+    "systemBus": "/system/interfaces",
+    "versionFirmware": "/gateway/versionFirmware",
+    "productID": "/gateway/productID",
+    "dateTime": "/gateway/time/timestamp"
+  },
+  "models": {
+    "7736701187": {
+      "value": "CT100",
+      "name": "Bosch ControlConnect",
+      "type": "NEFIT"
+    },
+    "7736701042": {
+      "value": "TC100",
+      "name": "Bosch TC100",
+      "type": "NEFIT"
+    },
+    "7736701047": {
+      "value": "CT100",
+      "name": "Junkers CT100",
+      "type": "NEFIT"
+    },
+    "7736701040": {
+      "value": "CT100",
+      "name": "Bosch Remote room controller CT100",
+      "type": "NEFIT"
+    },
+    "7736701045": {
+      "value": "TC100",
+      "name": "Bosch TC100 Ru",
+      "type": "NEFIT"
+    },
+    "7746901786": {
+      "value": "CT100",
+      "name": "Buderus CT100",
+      "type": "NEFIT"
+    },
+    "7746901877": {
+      "value": "CT100",
+      "name": "Junkers CT100",
+      "type": "NEFIT"
+    },
+    "7736701043": {
+      "value": "CT100 Cr",
+      "name": "CT100 Croatia",
+      "type": "NEFIT"
+    },
+    "7736701046": {
+      "value": "CT100 Fr",
+      "name": "CT100 France",
+      "type": "NEFIT"
+    },
+    "7736701044": {
+      "value": "CT100 Bel",
+      "name": "CT100 Belgium",
+      "type": "NEFIT"
+    },
+    "7716192072": {
+      "value": "CT100 UK",
+      "name": "Worcester Wave Thermostat",
+      "type": "NEFIT"
+    }
+  }
+}
