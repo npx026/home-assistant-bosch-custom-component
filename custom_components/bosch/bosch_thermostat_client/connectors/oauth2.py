@@ -5,6 +5,7 @@ import logging
 import asyncio
 import base64
 import hashlib
+import re
 import urllib.parse
 import webbrowser
 from collections import namedtuple
@@ -501,8 +502,13 @@ class Oauth2Connector:
         )
 
     def extract_code_from_url(self, url):
-        """
-        Extract authorization code from callback URL.
+        """Extract authorization code from callback URL.
+
+        Browsers display the redirect URL across multiple lines when they show
+        the "can't open this page" error. Copying that text inserts literal
+        newlines or percent-encoded newlines (%0A / %0D) into the URL. This
+        method strips all such artifacts before parsing so that the code can
+        be extracted reliably regardless of how the user copied the URL.
 
         Args:
             url (str): The callback URL containing the code
@@ -511,6 +517,9 @@ class Oauth2Connector:
             str: The authorization code, or None if not found
         """
         try:
+            # Remove all whitespace and percent-encoded whitespace/newline
+            # characters that may be introduced by browser line-wrapping.
+            url = re.sub(r'%0[AaDd]|%09|%20|\s', '', url.strip())
             if "code=" in url:
                 parsed_url = urllib.parse.urlparse(url)
                 query_params = urllib.parse.parse_qs(parsed_url.query)
