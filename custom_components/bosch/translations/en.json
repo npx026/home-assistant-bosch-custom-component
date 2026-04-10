@@ -32,8 +32,11 @@
               }
           },
           "easycontrol_oauth": {
-              "title": "Bosch EasyControl — Logging in\u2026",
-              "description": "A browser window has been opened. Please log in with your Bosch SingleKey ID account. This window will close automatically when done."
+              "title": "Bosch EasyControl — Log in with Bosch SingleKey ID (step 2/3)",
+              "description": "1. Open this URL in your browser and log in with your Bosch SingleKey ID:\n\n**[Open Bosch login]({auth_url})**\n\n2. After login, your browser will show an error page (the redirect URL uses a mobile app scheme). **Copy the full URL from your browser's address bar** — it starts with `com.bosch.tt.dashtt.pointt://app/login?code=...`\n\n3. Paste that URL in the field below.",
+              "data": {
+                  "redirect_url": "Redirect URL (paste from browser address bar)"
+              }
           },
           "easycontrol_claim": {
               "title": "Bosch EasyControl — POINTT API setup (step 3/3)",
@@ -57,7 +60,8 @@
       },
       "error": {
           "service_unavailable": "No service available",
-          "cannot_connect": "Could not connect to the Bosch POINTT API. Please try again."
+          "invalid_redirect_url": "Could not extract the OAuth code. Make sure you paste the full URL from the browser address bar (starting with com.bosch.tt.dashtt.pointt://...).",
+          "cannot_connect": "Token exchange failed. Please try again from step 1."
       },
       "abort": {
           "faulty_credentials": "Bad user credentials or wrong IP",

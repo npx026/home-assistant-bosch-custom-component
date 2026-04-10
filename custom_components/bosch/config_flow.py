@@ -175,13 +175,7 @@ class BoschFlowHandler(config_entries.ConfigFlow):
         return f"{ha_base}{OAUTH_CALLBACK_PATH}"
 
     async def async_step_easycontrol_serial(self, user_input=None):
-        """Step 1 of EasyControl POINTT OAuth: enter device serial number.
-
-        On submission, opens the Bosch SingleKey ID login page in the user's
-        browser via HA's async_external_step mechanism. The login result is
-        captured by BoschOAuthCallbackView and delivered as user_input to
-        async_step_easycontrol_oauth, so the user never has to copy/paste a URL.
-        """
+        """Step 1 of EasyControl POINTT OAuth: enter device serial number."""
         errors = {}
         if user_input is not None:
             self._host = user_input[CONF_ADDRESS].strip()
@@ -191,14 +185,19 @@ class BoschFlowHandler(config_entries.ConfigFlow):
                 access_token="",
                 loop=session,
             )
-            self._ha_redirect_uri = self._build_ha_redirect_uri()
-            auth_url = self._oauth_connector.build_auth_url(
-                redirect_uri=self._ha_redirect_uri,
-                state=self.flow_id,  # echoed back by OAuth server
-            )
-            return self.async_external_step(
+            # Build the auth URL using the standard mobile-app redirect_uri.
+            # Bosch's OAuth server only accepts its own registered redirect URIs,
+            # so we cannot use the HA callback URL here. The user must log in and
+            # paste the resulting redirect URL back into HA.
+            # BoschOAuthCallbackView stays registered; if Bosch ever widens their
+            # allowlist it will start working automatically.
+            auth_url = self._oauth_connector.build_auth_url()
+            self._auth_url = auth_url
+            return self.async_show_form(
                 step_id="easycontrol_oauth",
-                url=auth_url,
+                data_schema=vol.Schema({vol.Required("redirect_url"): str}),
+                description_placeholders={"auth_url": auth_url},
+                errors=errors,
             )
         return self.async_show_form(
             step_id="easycontrol_serial",
@@ -207,71 +206,83 @@ class BoschFlowHandler(config_entries.ConfigFlow):
         )
 
     async def async_step_easycontrol_oauth(self, user_input=None):
-        """Step 2: Receives the auth code delivered by BoschOAuthCallbackView.
+        """Step 2 of EasyControl POINTT OAuth: obtain the auth code.
 
-        Called automatically via hass.config_entries.flow.async_configure() when
-        the OAuth redirect lands on /api/bosch_easycontrol/callback.
-        user_input contains {"code": "...", "error": None | "access_denied"}.
+        Handles two paths:
+        - Manual: user pastes the full redirect URL from the browser address bar
+          (the URL starts with com.bosch.tt.dashtt.pointt://app/login?code=...)
+        - Automatic: BoschOAuthCallbackView called async_configure() with {"code": ...}
+          if Bosch's server accepted the HA redirect_uri (future-proof)
         """
-        if user_input is None:
-            # Frontend is polling before the callback has arrived — keep waiting.
-            return self.async_external_step(
-                step_id="easycontrol_oauth",
-                url=self._oauth_connector.build_auth_url(
-                    redirect_uri=self._ha_redirect_uri,
-                    state=self.flow_id,
-                ),
+        errors = {}
+        auth_url = getattr(self, "_auth_url", None) or self._oauth_connector.build_auth_url()
+
+        if user_input is not None:
+            # Automatic path: callback view delivered the code directly
+            if "code" in user_input:
+                error = user_input.get("error")
+                code = user_input.get("code")
+                if error or not code:
+                    _LOGGER.warning("OAuth callback returned error: %s", error)
+                    return self.async_abort(reason="oauth_error")
+            else:
+                # Manual paste path: extract code from the redirect URL
+                redirect_url = user_input.get("redirect_url", "").strip()
+                code = self._oauth_connector.extract_code_from_url(redirect_url)
+                if not code:
+                    errors["redirect_url"] = "invalid_redirect_url"
+                    return self.async_show_form(
+                        step_id="easycontrol_oauth",
+                        data_schema=vol.Schema({vol.Required("redirect_url"): str}),
+                        description_placeholders={"auth_url": auth_url},
+                        errors=errors,
+                    )
+
+            success = await self._oauth_connector.exchange_code_for_tokens(code)
+            if not success:
+                errors["base"] = "cannot_connect"
+                return self.async_show_form(
+                    step_id="easycontrol_oauth",
+                    data_schema=vol.Schema({vol.Required("redirect_url"): str}),
+                    description_placeholders={"auth_url": auth_url},
+                    errors=errors,
+                )
+
+            self._access_token = self._oauth_connector._access_token
+            self._refresh_token = self._oauth_connector._refresh_token
+            self._token_expires_at = self._oauth_connector._token_expires_at
+
+            # Check if the gateway is already claimed
+            session = async_get_clientsession(self.hass)
+            try:
+                from aiohttp import ClientTimeout
+                url = Oauth2Connector.POINTTAPI_BASE_URL
+                headers = {"Authorization": f"Bearer {self._access_token}"}
+                async with session.get(url, headers=headers, timeout=ClientTimeout(total=10)) as resp:
+                    if resp.status == 200:
+                        gateways = await resp.json()
+                        device_ids = [gw.get("deviceId") for gw in gateways]
+                        if self._host in device_ids:
+                            _LOGGER.debug("Gateway %s already claimed", self._host)
+                            return await self._easycontrol_create_entry()
+            except Exception as err:
+                _LOGGER.debug("Gateway list check failed: %s", err)
+
+            # Gateway not yet claimed — ask for device label credentials
+            return self.async_show_form(
+                step_id="easycontrol_claim",
+                data_schema=vol.Schema({
+                    vol.Required("access_code"): str,
+                    vol.Required("user_password"): str,
+                }),
             )
 
-        error = user_input.get("error")
-        if error:
-            _LOGGER.warning("OAuth login returned error: %s", error)
-            return self.async_abort(reason="oauth_error")
-
-        code = user_input.get("code")
-        if not code:
-            return self.async_abort(reason="oauth_error")
-
-        self._pending_oauth_code = code
-        # Mark the external step done — HA closes the browser tab and
-        # immediately advances to easycontrol_exchange.
-        return self.async_external_step_done(next_step_id="easycontrol_exchange")
-
-    async def async_step_easycontrol_exchange(self, user_input=None):
-        """Step 2b: Exchange the auth code for tokens (runs after external step)."""
-        success = await self._oauth_connector.exchange_code_for_tokens(
-            self._pending_oauth_code
-        )
-        if not success:
-            return self.async_abort(reason="cannot_connect")
-
-        self._access_token = self._oauth_connector._access_token
-        self._refresh_token = self._oauth_connector._refresh_token
-        self._token_expires_at = self._oauth_connector._token_expires_at
-
-        # Check if the gateway is already claimed
-        session = async_get_clientsession(self.hass)
-        try:
-            from aiohttp import ClientTimeout
-            url = Oauth2Connector.POINTTAPI_BASE_URL
-            headers = {"Authorization": f"Bearer {self._access_token}"}
-            async with session.get(url, headers=headers, timeout=ClientTimeout(total=10)) as resp:
-                if resp.status == 200:
-                    gateways = await resp.json()
-                    device_ids = [gw.get("deviceId") for gw in gateways]
-                    if self._host in device_ids:
-                        _LOGGER.debug("Gateway %s already claimed", self._host)
-                        return await self._easycontrol_create_entry()
-        except Exception as err:
-            _LOGGER.debug("Gateway list check failed: %s", err)
-
-        # Gateway not yet claimed — ask for device label credentials
+        # First time showing the form
         return self.async_show_form(
-            step_id="easycontrol_claim",
-            data_schema=vol.Schema({
-                vol.Required("access_code"): str,
-                vol.Required("user_password"): str,
-            }),
+            step_id="easycontrol_oauth",
+            data_schema=vol.Schema({vol.Required("redirect_url"): str}),
+            description_placeholders={"auth_url": auth_url},
+            errors=errors,
         )
 
     async def async_step_easycontrol_claim(self, user_input=None):
@@ -403,7 +414,7 @@ class BoschFlowHandler(config_entries.ConfigFlow):
         )
 
     async def async_step_reauth_confirm(self, user_input=None):
-        """User confirms — restart the OAuth external step to refresh tokens."""
+        """User confirms — set up the OAuth connector and show the login step."""
         if user_input is not None:
             session = async_get_clientsession(self.hass)
             self._oauth_connector = Oauth2Connector(
@@ -411,14 +422,12 @@ class BoschFlowHandler(config_entries.ConfigFlow):
                 access_token="",
                 loop=session,
             )
-            self._ha_redirect_uri = self._build_ha_redirect_uri()
-            auth_url = self._oauth_connector.build_auth_url(
-                redirect_uri=self._ha_redirect_uri,
-                state=self.flow_id,
-            )
-            return self.async_external_step(
+            auth_url = self._oauth_connector.build_auth_url()
+            self._auth_url = auth_url
+            return self.async_show_form(
                 step_id="easycontrol_oauth",
-                url=auth_url,
+                data_schema=vol.Schema({vol.Required("redirect_url"): str}),
+                description_placeholders={"auth_url": auth_url},
             )
         return self.async_show_form(
             step_id="reauth_confirm",
