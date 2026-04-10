@@ -1,0 +1,341 @@
+{
+    "versionFirmware": "01.10.03",
+    "date_format": "%Y-%m-%dT%H:%M:%S",
+    "heatingCircuits": {
+        "hastates": [
+            {
+                "haname": "off",
+                "boschname": [
+                    "off"
+                ]
+            },
+            {
+                "haname": "heat",
+                "boschname": [
+                    "day"
+                ]
+            },
+            {
+                "haname": "heat_cool",
+                "boschname": [
+                    "night"
+                ]
+            },
+            {
+                "haname": "auto",
+                "boschname": [
+                    "auto"
+                ]
+            }
+        ],
+        "min_ref": "setpoint2",
+        "max_ref": "setpoint1",
+        "schedule": {
+            "program":"/heatingCircuits/{}/switchPrograms/{}",
+            "key_day": "dayOfWeek",
+            "key_setpoint": "setpoint",
+            "key_time": "time",
+            "switch_points": "switchPoints"
+        },
+        "mode_to_setpoint": {
+            "night": {
+                "setpoint": "setpoint2",
+                "type": "manual"
+            },
+            "day": {
+                "setpoint": "setpoint1",
+                "type": "manual"
+            },
+            "auto": {
+                "setpoint": null,
+                "type": "auto"
+            }
+        },
+        "refs": {
+            "current_temp": {
+                "id": "roomtemperature",
+                "name": "Room temperature",
+                "type": "regular"
+            },
+            "operation_mode": {
+                "id": "operationMode",
+                "name": "Operation mode",
+                "type": "operation_mode"
+            },
+            "setpoint1": {
+                "id": "temperatureLevels/day",
+                "name": "Manual room setpoint",
+                "type": "setpoint"
+            },
+            "setpoint2": {
+                "id": "temperatureLevels/night",
+                "name": "Manual room setpoint",
+                "type": "setpoint"
+            },
+            "activeProgram": {
+                "id": "activeSwitchProgram",
+                "name": "Active Switch Program",
+                "type": "activeProgram"
+            },
+            "status": {
+                "id": "status",
+                "name": "Heating circuit status",
+                "type": "regular"
+            }
+        },
+        "sensors": {
+            "heatCurveMax": {
+                "id": "heatCurveMax",
+                "name": "heatCurveMax"
+            },
+            "controlType": {
+                "id": "controlType",
+                "name": "controlType"
+            },
+            "roomInfluence": {
+                "id": "roomInfluence",
+                "name": "roomInfluence"
+            },
+            "roomTempOffset": {
+                "id": "roomTempOffset",
+                "name": "roomTempOffset"
+            },
+            "pumpModulation": {
+                "id": "pumpModulation",
+                "name": "Pump Modulation"
+            },
+            "actualSupplyTemperature": {
+                "id":"actualSupplyTemperature",
+                "name": "Actual supply temp of HC",
+                "state_class": "measurement",
+                "device_class": "temperature"
+            }
+        },
+        "switches": {
+            "suWiSwitchMode": {
+                "id": "suWiSwitchMode",
+                "name": "Summer Winter Switchmode"
+            },
+            "suWiThreshold": {
+                "id": "suWiThreshold",
+                "name": "Summer Winter Threshold",
+                "type": "number"
+            }
+        }
+    },
+    "dhwCircuits": {
+        "hastates": [
+            {
+                "haname": "off",
+                "boschname": [
+                    "off"
+                ]
+            },
+            {
+                "haname": "on",
+                "boschname": [
+                    "on"
+                ]
+            },
+            {
+                "haname": "performance",
+                "boschname": [
+                    "auto"
+                ]
+            }
+        ],
+        "min_ref": "setpoint1",
+        "max_ref": "setpoint2",
+        "schedule": {
+            "program":"/dhwCircuits/{}/switchPrograms/{}",
+            "key_day": "dayOfWeek",
+            "key_setpoint": "setpoint",
+            "key_time": "time",
+            "switch_points": "switchPoints"
+        },
+        "mode_to_setpoint": {
+            "on": {
+                "setpoint": "setpoint2",
+                "type": "manual"
+            },
+            "off": {
+                "setpoint": null,
+                "type": "off"
+            },
+            "auto": {
+                "setpoint": null,
+                "type": "auto"
+            }
+        },
+        "refs": {
+            "current_temp": {
+                "id": "actualTemp",
+                "name": "Room temperature",
+                "type": "regular"
+            },
+            "operation_mode": {
+                "id": "operationMode",
+                "name": "Operation mode",
+                "type": "operation_mode"
+            },
+            "setpoint1": {
+                "id": "temperatureLevels/off",
+                "name": "DHW off level",
+                "type": "setpoint"
+            },
+            "setpoint2": {
+                "id": "temperatureLevels/on",
+                "name": "DHW High level",
+                "type": "setpoint"
+            },
+            "status": {
+                "id": "status",
+                "name": "DHW status",
+                "type": "regular"
+            },
+            "activeProgram": {
+                "id": "activeSwitchProgram",
+                "name": "Active Switch Program",
+                "type": "activeProgram"
+            }
+        },
+        "sensors": {
+            "waterFlow": {
+                "id": "waterFlow",
+                "name": "Water flow"
+            },
+            "workingTime": {
+                "id": "workingTime",
+                "name": "Working time"
+            }
+        }
+    },
+    "solarCircuits": {
+        "sensors": {
+            "collectorTemperature": {
+                "id": "collectorTemperature",
+                "name": "collectorTemperature"
+            },
+            "dhwTankTemperature": {
+                "id": "dhwTankTemperature",
+                "name": "dhwTankTemperature"
+            },
+            "solarYield": {
+                "id": "solarYield",
+                "name": "solarYield"
+            },
+            "pumpModulation": {
+                "id": "pumpModulation",
+                "name": "pumpModulation"
+            },
+            "actuatorStatus": {
+                "id": "actuatorStatus",
+                "name": "actuatorStatus"
+            }
+        },
+        "refs": {
+            "status": {
+                "id": "status",
+                "name": "status",
+                "type": "regular"
+            }
+        }
+    },
+    "sensors": {
+        "outdoor_t1": {
+            "id": "/system/sensors/temperatures/outdoor_t1",
+            "name": "Outdoor temperature",
+            "state_class": "measurement",
+            "device_class": "temperature"
+        },
+        "hotWater_t1": {
+            "id": "/system/sensors/temperatures/hotWater_t1",
+            "name": "Hotwater temp 1",
+            "state_class": "measurement",
+            "device_class": "temperature"
+        },
+        "hotWater_t2": {
+            "id": "/system/sensors/temperatures/hotWater_t2",
+            "name": "Hotwater temp 2",
+            "state_class": "measurement",
+            "device_class": "temperature"
+        },
+        "supply_t1_setpoint": {
+            "id": "/system/sensors/temperatures/supply_t1_setpoint",
+            "name": "Supply temp setpoint",
+            "state_class": "measurement",
+            "device_class": "temperature"
+        },
+        "supply_t1": {
+            "id": "/system/sensors/temperatures/supply_t1",
+            "name": "Actual supply temp",
+            "state_class": "measurement",
+            "device_class": "temperature"
+        },
+        "actualSupplyTemperature": {
+            "id": "/system/appliance/actualSupplyTemperature",
+            "name": "Actual supply temp",
+            "state_class": "measurement",
+            "device_class": "temperature"
+        },
+        "return": {
+            "id": "/system/sensors/temperatures/return",
+            "name": "Return temp"
+        },
+        "powerSetpoint": {
+            "id": "/system/appliance/powerSetpoint",
+            "name": "powerSetpoint"
+        },
+        "healthStatus": {
+            "id": "/system/healthStatus",
+            "name": "Health status"
+        },
+        "actualPower": {
+            "id": "/heatSources/actualPower",
+            "name": "Actual Power",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        "actualModulation": {
+            "id": "/heatSources/actualModulation",
+            "name": "Actual modulation"
+        },
+        "CHpumpModulation": {
+            "id": "/heatSources/CHpumpModulation",
+            "name": "Actual heating pump modulation"
+        },
+        "totalSystem": {
+            "id": "/heatSources/workingTime/totalSystem",
+            "name": "Total system uptime"
+        },
+        "systemPressure": {
+            "id": "/heatSources/systemPressure",
+            "name": "System pressure",
+            "state_class": "measurement",
+            "device_class": "pressure"
+        },
+        "flameStatus": {
+            "id": "/heatSources/flameStatus",
+            "name": "flameStatus",
+            "type": "binary"
+        },
+        "ChimneySweeper": {
+            "id": "/heatSources/ChimneySweeper",
+            "name": "ChimneySweeper",
+            "type": "binary"
+        },
+        "numberOfStarts": {
+            "id": "/heatSources/numberOfStarts",
+            "name": "numberOfStarts"
+        }
+    },
+    "crawlSensors": [
+        {
+            "uri": "/recordings",
+            "deep": 4,
+            "sensorType": "recording",
+            "state_class": "total",
+            "device_class": "energy"
+        }
+    ]
+}

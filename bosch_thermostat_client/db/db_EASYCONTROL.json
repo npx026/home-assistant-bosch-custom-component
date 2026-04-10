@@ -1,0 +1,27 @@
+{
+  "versionFirmwarePath": "/gateway/versionFirmware",
+  "gateway": {
+    "uuid": "/gateway/uuid",
+    "systemBus": "/system/bus",
+    "versionFirmware": "/gateway/versionFirmware",
+    "productID": "/gateway/productID",
+    "dateTime": "/gateway/DateTime"
+  },
+  "models": {
+    "8737906739": {
+      "value": "CT200",
+      "name": "Bosch CT200",
+      "type": "EASYCONTROL"
+    },
+    "8737906740": {
+      "value": "TC100.2",
+      "name": "Buderus TC100.2",
+      "type": "EASYCONTROL"
+    },
+    "8737906738":{
+      "value": "CT200",
+      "name": "Bosch EasyControl CT200",
+      "type": "EASYCONTROL"
+    }
+  }
+}

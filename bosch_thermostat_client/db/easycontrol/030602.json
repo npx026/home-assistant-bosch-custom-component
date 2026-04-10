@@ -1,0 +1,268 @@
+{
+  "versionFirmware": "03.06.02",
+  "date_format": "%Y-%m-%dT%H:%M:%S%z",
+  "programList": "/programs/list",
+  "devices": {
+    "refs": {
+      "status": {
+        "id": "list",
+        "name": "list",
+        "type": "regular"
+      }
+    }
+  },
+  "solarCircuits": {
+    "refs": {
+      "status": {
+        "id": "totalSolarGain",
+        "name": "totalSolarGain",
+        "type": "regular"
+      }
+    },
+    "sensors": {
+      "collectorTemperature": {
+        "id": "collectorTemperature",
+        "name": "collectorTemperature",
+        "type": "regular",
+        "state_class": "measurement",
+        "device_class": "temperature"
+      },
+      "dhwTankBottomTemperature": {
+        "id": "dhwTankBottomTemperature",
+        "name": "dhwTankTemperature",
+        "type": "regular",
+        "state_class": "measurement",
+        "device_class": "temperature"
+      },
+      "totalSolarGain": {
+        "id": "totalSolarGain",
+        "name": "totalSolarGain",
+        "type": "regular"
+      },
+      "pumpModulation": {
+        "id": "pumpModulation",
+        "name": "pumpModulation",
+        "type": "regular"
+      }
+    }
+  },
+  "zones": {
+    "hastates": [
+      {
+        "haname": "heat",
+        "boschname": ["manual"]
+      },
+      {
+        "haname": "auto",
+        "boschname": ["clock"]
+      }
+    ],
+    "min_ref": "setpoint1",
+    "max_ref": "setpoint1",
+    "hvacAction": "status",
+    "mode_to_setpoint": {
+      "manual": {
+        "setpoint": "setpoint1",
+        "type": "manual"
+      },
+      "clock": {
+        "setpoint": "setpoint2",
+        "type": "auto"
+      }
+    },
+    "refs": {
+      "current_temp": {
+        "id": "temperatureActual",
+        "name": "Room temperature",
+        "type": "regular"
+      },
+      "operation_mode": {
+        "id": "userMode",
+        "name": "Operation mode",
+        "type": "operation_mode"
+      },
+      "setpoint1": {
+        "id": "manualTemperatureHeating",
+        "name": "Manual room setpoint",
+        "type": "setpoint"
+      },
+      "setpoint2": {
+        "id": "clockOverride/temperatureHeating",
+        "name": "Clockoverride setpoint",
+        "type": "setpoint"
+      },
+      "targettemp": {
+        "id": "temperatureHeatingSetpoint",
+        "name": "Active Target temp",
+        "type": "regular"
+      },
+      "status": {
+        "id": "status",
+        "name": "Heating circuit status",
+        "type": "regular"
+      },
+      "name": {
+        "id": "name",
+        "name": "Name of zone",
+        "type": "regular"
+      },
+      "activeProgram": {
+        "id": "clockProgram",
+        "name": "Active Switch Program",
+        "type": "activeProgram"
+      }
+    },
+    "sensors": {
+      "actualValvePosition": {
+        "id": "actualValvePosition",
+        "name": "Valve position"
+      },
+      "nextSetpoint": {
+        "id": "nextSetpoint",
+        "name": "Next setpoint"
+      },
+      "optimumStartHeatupRate": {
+        "id": "optimumStartHeatupRate",
+        "name": "optimumStartHeatupRate"
+      },
+      "timeToNextSetpoint": {
+        "id": "timeToNextSetpoint",
+        "name": "timeToNextSetpoint"
+      }
+    }
+  },
+  "dhwCircuits": {
+    "hastates": [
+      {
+        "haname": "off",
+        "boschname": ["Off"]
+      },
+      {
+        "haname": "high_demand",
+        "boschname": ["high"]
+      }
+    ],
+    "min_ref": "setpoint1",
+    "max_ref": "setpoint1",
+    "mode_to_setpoint": {
+      "Off": {
+        "setpoint": null,
+        "type": "off"
+      },
+      "high": {
+        "setpoint": "setpoint1",
+        "type": "manual"
+      },
+      "ownprogram": {
+        "setpoint": null,
+        "type": "auto"
+      }
+    },
+    "schedule": {
+      "program": "/dhwCircuits/{}/programs/{}/week",
+      "key_day": "d",
+      "key_setpoint": "dhw",
+      "key_time": "t",
+      "switch_points": "value"
+    },
+    "refs": {
+      "operation_mode": {
+        "id": "operationMode",
+        "name": "Operation mode",
+        "type": "operation_mode"
+      },
+      "setpoint1": {
+        "id": "temperatureLevels/high",
+        "name": "DHW High level",
+        "type": "setpoint"
+      },
+      "status": {
+        "id": "state",
+        "name": "DHW status",
+        "type": "regular"
+      },
+      "activeProgram": {
+        "id": "programs",
+        "name": "Active Switch Program",
+        "type": "activeProgram"
+      },
+      "switchPrograms": {
+        "id": "programs",
+        "name": "Switch Programs",
+        "type": "regular"
+      }
+    },
+    "sensors": {
+      "thermalDisinfectlastResult": {
+        "id": "thermalDisinfect/lastResult",
+        "name": "thermalDisinfect lastResult"
+      },
+      "thermalDisinfectstate": {
+        "id": "thermalDisinfect/state",
+        "name": "thermalDisinfect state"
+      },
+      "thermalDisinfectlasttime": {
+        "id": "thermalDisinfect/time",
+        "name": "thermalDisinfect time"
+      },
+      "thermalDisinfectlastweekDay": {
+        "id": "thermalDisinfect/weekDay",
+        "name": "thermalDisinfect weekDay"
+      }
+    }
+  },
+  "sensors": {
+    "outdoor_t1": {
+      "id": "/system/sensors/temperatures/outdoor_t1",
+      "name": "Outdoor temperature",
+      "state_class": "measurement",
+      "device_class": "temperature"
+    },
+    "indoor_h1": {
+      "id": "/system/sensors/humidity/indoor_h1",
+      "name": "Indoor humidity"
+    },
+    "system_pressure": {
+      "id": "/system/appliance/systemPressure",
+      "name": "System pressure"
+    },
+    "actualModulation": {
+      "id": "/heatSources/actualModulation",
+      "name": "Actual modulation"
+    },
+    "CHpumpModulation": {
+      "id": "/heatSources/CHpumpModulation",
+      "name": "Actual heating pump modulation"
+    },
+    "actualSupplyTemperature": {
+      "id": "/heatSources/actualSupplyTemperature",
+      "name": "Actual supply temperature"
+    },
+    "refillNeeded": {
+      "id": "/heatSources/refillNeeded",
+      "name": "Refill needed11"
+    },
+    "energy": {
+      "id": "/energy/history",
+      "pagination": "/energy/historyEntries",
+      "state_class": "measurement",
+      "device_class": "power"
+    }
+  },
+  "crawlSensors": [
+    {
+      "uri": "/devices",
+      "deep": 1,
+      "exclude": "^.*(device\\d|list|productLookup)$",
+      "sensorType": "array",
+      "state": "battery"
+    }
+  ],
+  "switches": {
+    "awayMode": {
+      "id": "/system/awayMode/enabled",
+      "name": "Away mode",
+      "type": "binary"
+    }
+  }
+}

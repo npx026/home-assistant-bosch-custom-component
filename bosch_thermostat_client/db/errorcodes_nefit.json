@@ -1,0 +1,828 @@
+{
+    "-A": {
+        "208": {
+            "description": "The boiler is in chimney sweep or service operation."
+        }
+    },
+    "-H": {
+        "200": {
+            "description": "The boiler is in central heating mode."
+        }
+    },
+    "=H": {
+        "201": {
+            "description": "The boiler is in hot water mode."
+        }
+    },
+    "0A": {
+        "202": {
+            "description": "The boiler is waiting. There has been a heat demand from an on/off or a ModuLine control more than once every 10 minutes."
+        },
+        "305": {
+            "description": "The boiler waits after the hot water operation has ended."
+        },
+        "353": {
+            "description": "The boiler is waiting. The boiler has never been off for more than 20 minutes in 24 hours."
+        }
+    },
+    "0C": {
+        "283": {
+            "description": "The boiler is preparing for a burner start. The fan and the pump are controlled."
+        }
+    },
+    "0E": {
+        "265": {
+            "description": "The boiler is waiting. The boiler regularly switches on at low load to meet the heat demand."
+        }
+    },
+    "0H": {
+        "203": {
+            "description": "The boiler is on standby."
+        }
+    },
+    "0L": {
+        "284": {
+            "description": "The gas control block is activated."
+        }
+    },
+    "0P": {
+        "205": {
+            "description": "The boiler is waiting for the air pressure switch to switch."
+        }
+    },
+    "0U": {
+        "270": {
+            "description": "The boiler is starting up."
+        }
+    },
+    "0Y": {
+        "204": {
+            "description": "The boiler is waiting. The measured supply temperature is higher than the calculated or set heating water temperature."
+        },
+        "276": {
+            "description": "The flow temperature sensor has measured a temperature higher than 95 \u00baC."
+        },
+        "277": {
+            "description": "The safety temperature sensor has measured a temperature higher than 95 \u00baC."
+        },
+        "285": {
+            "description": "The return temperature sensor has measured a temperature greater than 95\u00baC."
+        },
+        "359": {
+            "description": "The hot water temperature sensor has measured a temperature that is too high."
+        }
+    },
+    "1A": {
+        "316": {
+            "description": "The flue gas temperature sensor has measured a temperature that is too high."
+        }
+    },
+    "1C": {
+        "210": {
+            "description": "The flue gas thermostat has measured too high a temperature and is open."
+        }
+    },
+    "1P": {
+        "346": {
+            "description": "The temperature of the flue gas temperature sensor is rising too fast."
+        }
+    },
+    "1U": {
+        "317": {
+            "description": "The flue gas temperature sensor contacts are short-circuited."
+        }
+    },
+    "1Y": {
+        "318": {
+            "description": "The flue gas temperature sensor contacts are open."
+        }
+    },
+    "2A": {
+        "343": {
+            "description": "During central heating operation: the flue gas temperature sensor measures a temperature increase, but the flow temperature sensor does not."
+        },
+        "344": {
+            "description": "During hot water operation: The flue gas temperature sensor measures a temperature increase, but the flow temperature sensor does not."
+        }
+    },
+    "2C": {
+        "348": {
+            "description": "During hot water operation: the flow temperature is higher than 85 \u00baC."
+        }
+    },
+    "2E": {
+        "207": {
+            "description": "The central heating water pressure is too low."
+        },
+        "357": {
+            "description": "The venting program is running."
+        }
+    },
+    "2F": {
+        "260": {
+            "description": "The flow temperature sensor does not measure a temperature rise after a burner start."
+        },
+        "271": {
+            "description": "The measured temperature difference between the flow and safety temperature sensor is too great."
+        },
+        "338": {
+            "description": "Burner start aborted too many times."
+        },
+        "345": {
+            "description": "The flow temperature sensor does not measure a temperature rise after a burner start."
+        }
+    },
+    "2H": {
+        "358": {
+            "description": "The 3-way valve is being released."
+        }
+    },
+    "2L": {
+        "266": {
+            "description": "The pump test failed."
+        },
+        "329": {
+            "description": "The pressure sensor is not measuring water flow."
+        }
+    },
+    "2P": {
+        "212": {
+            "description": "The temperature measured by the flow temperature sensor or the safety temperature sensor is rising too fast."
+        },
+        "341": {
+            "description": "The temperature measured by the flow temperature sensor or the return temperature sensor is rising too fast."
+        },
+        "342": {
+            "description": "The temperature measured by the flow temperature sensor rises too quickly."
+        }
+    },
+    "2U": {
+        "213": {
+            "description": "The measured temperature between the flow and return temperature sensors is too great."
+        },
+        "349": {
+            "description": "The temperature difference measured at low load between the flow temperature sensor and the return temperature sensor is too great."
+        }
+    },
+    "2Y": {
+        "281": {
+            "description": "The pump is stuck or spinning in air."
+        },
+        "282": {
+            "description": "The pump control signal is missing."
+        }
+    },
+    "3A": {
+        "264": {
+            "description": "The control signal or the voltage of the fan has been lost during operation."
+        }
+    },
+    "3C": {
+        "217": {
+            "description": "The fan speed is erratic during startup."
+        }
+    },
+    "3F": {
+        "273": {
+            "description": "The boiler has been switched off for a maximum of 2 minutes because the boiler has been in continuous operation for 24 hours. This is a safety check."
+        }
+    },
+    "3L": {
+        "214": {
+            "description": "Fan does not run during the startup phase (0C)."
+        }
+    },
+    "3P": {
+        "216": {
+            "description": "The fan speed is too low."
+        }
+    },
+    "3Y": {
+        "215": {
+            "description": "The fan speed is too high."
+        }
+    },
+    "4A": {
+        "218": {
+            "description": "The flow temperature sensor has measured a temperature higher than 105 \u00baC."
+        },
+        "332": {
+            "description": "The flow temperature sensor has measured a temperature higher than 110 \u00baC."
+        }
+    },
+    "4C": {
+        "224": {
+            "description": "A appliance thermostat (eg maximum or burner thermostat) has measured a temperature that is too high and is open."
+        }
+    },
+    "4E": {
+        "225": {
+            "description": "An unexpectedly large temperature difference was measured in the dual sensor."
+        },
+        "278": {
+            "description": "The sensor test failed."
+        },
+        "347": {
+            "description": "The return temperature sensor has measured a higher heating water temperature than the supply temperature sensor. A restart follows after 10 minutes."
+        },
+        "375": {
+            "description": "The contacts of the external sensor (eg solar sensor) are short-circuited."
+        },
+        "376": {
+            "description": "The contacts of the external sensor (eg solar sensor) are interrupted."
+        }
+    },
+    "4F": {
+        "219": {
+            "description": "The safety temperature sensor has measured a temperature higher than 105 C."
+        }
+    },
+    "4L": {
+        "220": {
+            "description": "The contacts of the safety temperature sensor are short-circuited or the safety temperature sensor has measured a temperature higher than 130 \u00baC."
+        }
+    },
+    "4P": {
+        "221": {
+            "description": "The contacts of the safety temperature sensor are open."
+        }
+    },
+    "4U": {
+        "222": {
+            "description": "The contacts of the flow temperature sensor are short-circuited."
+        },
+        "350": {
+            "description": "The contacts of the flow temperature sensor are short-circuited."
+        }
+    },
+    "4Y": {
+        "223": {
+            "description": "The contacts of the flow temperature sensor are open."
+        },
+        "351": {
+            "description": "The contacts of the flow temperature sensor are open."
+        }
+    },
+    "5A": {
+        "-6": {
+            "description": "Trouble code generated by Nefit Service Tool/Hand-held terminal."
+        }
+    },
+    "5C": {
+        "226": {
+            "description": "Service Tool has been connected."
+        }
+    },
+    "5F": {
+        "-1": {
+            "description": "Service Tool: Service test is taking too long."
+        }
+    },
+    "5H": {
+        "268": {
+            "description": "Component test."
+        }
+    },
+    "5Y": {
+        "-2": {
+            "description": "Service Tool: service test takes too long or a boiler parameter has been changed."
+        }
+    },
+    "6A": {
+        "227": {
+            "description": "Insufficient ionisation current measured after ignition of the burner."
+        }
+    },
+    "6C": {
+        "228": {
+            "description": "An ionization current was measured before the burner started."
+        },
+        "306": {
+            "description": "An ionization current was measured after the burner was extinguished."
+        }
+    },
+    "6H": {
+        "-7": {
+            "description": "Ionization drops shortly after burner ignition."
+        }
+    },
+    "6L": {
+        "229": {
+            "description": "Insufficient ionization current was measured during burning."
+        }
+    },
+    "6P": {
+        "269": {
+            "description": "The ignition unit has been activated for too long."
+        }
+    },
+    "7A": {
+        "-8": {
+            "description": "The mains voltage or ModuLine thermostat is externally influenced."
+        }
+    },
+    "7C": {
+        "231": {
+            "description": "Mains power has been interrupted during a latching fault."
+        }
+    },
+    "7F": {
+        "-9": {
+            "description": "Fuse F3 is blown"
+        }
+    },
+    "7H": {
+        "328": {
+            "description": "There has been a momentary interruption of the power supply."
+        }
+    },
+    "7L": {
+        "261": {
+            "description": "The burner control unit is defective."
+        },
+        "280": {
+            "description": "The burner control unit is defective."
+        }
+    },
+    "8C": {
+        "373": {
+            "description": "The burner thermostat has measured too high a temperature more often than allowed."
+        },
+        "374": {
+            "description": "Insufficient ionization current was measured during burning, more often than allowed."
+        }
+    },
+    "8U": {
+        "364": {
+            "description": "The gas control block is showing signs of aging."
+        },
+        "365": {
+            "description": "The gas control block is showing signs of aging."
+        }
+    },
+    "8Y": {
+        "232": {
+            "description": "The external switching contact is open."
+        }
+    },
+    "9A": {
+        "235": {
+            "description": "The KIM is too new for the burner control."
+        },
+        "360": {
+            "description": "The installed KIM does not correspond to the burner control."
+        },
+        "361": {
+            "description": "The installed burner control unit does not correspond to the KIM."
+        }
+    },
+    "9C": {
+        "322": {
+            "description": "The burner controller does not see a KIM."
+        },
+        "-10": {
+            "description": "The burner controller does not see a KIM."
+        }
+    },
+    "9F": {
+        "-11": {
+            "description": "The burner control unit is defective."
+        }
+    },
+    "9H": {
+        "237": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "267": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "272": {
+            "description": "The burner control unit or the KIM is defective."
+        }
+    },
+    "9L": {
+        "234": {
+            "description": "The contacts of the gas control block are broken."
+        },
+        "238": {
+            "description": "The burner control unit or the KIM is defective."
+        }
+    },
+    "9P": {
+        "239": {
+            "description": "The burner control unit or the KIM is defective."
+        }
+    },
+    "9AM": {
+        "233": {
+            "description": "The burner control unit or the KIM is defective."
+        }
+    },
+    "C0": {
+        "288": {
+            "description": "The water pressure is too high or the contacts of the pressure sensor are broken."
+        },
+        "289": {
+            "description": "The pressure sensor contacts are shorted."
+        }
+    },
+    "CA": {
+        "286": {
+            "description": "The return temperature sensor has measured a central heating return temperature that is higher than 105 \u00baC."
+        }
+    },
+    "CU": {
+        "240": {
+            "description": "Return temperature sensor contacts are shorted."
+        }
+    },
+    "CY": {
+        "241": {
+            "description": "Return temperature sensor contacts are open."
+        }
+    },
+    "E1": {
+        "242": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "243": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "244": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "245": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "247": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "248": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "249": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "255": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "257": {
+            "description": "The burner control unit or the KIM is defective."
+        }
+    },
+    "EA": {
+        "246": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "252": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "253": {
+            "description": "The burner control unit or the KIM is defective."
+        }
+    },
+    "EC": {
+        "251": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "256": {
+            "description": "The burner control unit or the KIM is defective."
+        }
+    },
+    "EF": {
+        "254": {
+            "description": "The burner control unit or the KIM is defective."
+        }
+    },
+    "EH": {
+        "250": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "258": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "262": {
+            "description": "The burner control unit or the KIM is defective."
+        }
+    },
+    "EL": {
+        "259": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "279": {
+            "description": "The burner control unit or the KIM is defective."
+        },
+        "290": {
+            "description": "The burner control unit or the KIM is defective."
+        }
+    },
+    "EP": {
+        "287": {
+            "description": "The burner control unit or the KIM is defective."
+        }
+    },
+    "EY": {
+        "263": {
+            "description": "The burner control unit or the KIM is defective."
+        }
+    },
+    "A01": {
+        "800": {
+            "description": "The outside temperature sensor is defective or gives an unrealistic value."
+        },
+        "808": {
+            "description": "The hot water temperature sensor of the first DHW group is defective or gives an unrealistic value."
+        },
+        "809": {
+            "description": "The hot water temperature sensor of the second DHW group is defective or gives an unrealistic value."
+        },
+        "810": {
+            "description": "The hot water supply remains cold or the hot water temperature has not risen for 2 hours during heating."
+        },
+        "811": {
+            "description": "The thermal disinfection of the DHW cylinder failed or the temperature for disinfecting the DHW cylinder was not reached within 3 hours."
+        },
+        "816": {
+            "description": "Communication is not possible over the communication bus."
+        },
+        "828": {
+            "description": "Water pressure sensor is malfunctioning."
+        }
+    },
+    "A02": {
+        "816": {
+            "description": "No communication with the control panel of the boiler."
+        }
+    },
+    "A11": {
+        "801": {
+            "description": "An internal error has occurred."
+        },
+        "802": {
+            "description": "The time is not set."
+        },
+        "803": {
+            "description": "The date is not set."
+        },
+        "804": {
+            "description": "An internal error has occurred."
+        },
+        "806": {
+            "description": "The room temperature sensor of the ModuLine control is defective or gives an unrealistic value."
+        },
+        "821": {
+            "description": "No ModuLine control has been applied for the concerned heating circuit."
+        },
+        "822": {
+            "description": "No ModuLine control has been applied for the concerned heating circuit."
+        },
+        "823": {
+            "description": "No ModuLine control has been applied for the concerned heating circuit."
+        },
+        "824": {
+            "description": "No ModuLine control has been applied for the concerned heating circuit."
+        },
+        "825": {
+            "description": "There are 2 ModuLine controls assigned to 1 heating circuit."
+        },
+        "826": {
+            "description": "The room temperature sensor of the ModuLine 400 control is defective or gives unrealistic values."
+        },
+        "827": {
+            "description": "The room temperature sensor of the ModuLine 400 control is defective or gives unrealistic values."
+        },
+        "828": {
+            "description": "The water pressure sensor is defective or gives unrealistic values."
+        }
+    },
+    "A12": {
+        "815": {
+            "description": "The flow temperature sensor of the low loss header is defective or gives an unrealistic value."
+        },
+        "816": {
+            "description": "Communication is not possible with the distribution module (WM10)."
+        }
+    },
+    "A18": {
+        "825": {
+            "description": "There are 2 ModuLine controls assigned to 1 heating circuit."
+        }
+    },
+    "A21": {
+        "806": {
+            "description": "The room temperature sensor of the ModuLine control of the relevant heating group is defective or gives an unrealistic value."
+        },
+        "816": {
+            "description": "Communication is not possible with the ModuLine control of the respective heating circuit."
+        },
+        "829": {
+            "description": "No heating circuit has been assigned to the ModuLine control, or a heating circuit has been assigned to a ModuLine control that is not present."
+        },
+        "830": {
+            "description": "The battery voltage is too low for the wireless ModuLine control of the respective heating circuit."
+        },
+        "839": {
+            "description": "There is no radio communication with the wireless ModuLine control of the respective heating circuit."
+        },
+        "842": {
+            "description": "No ModuLine control has been applied for the concerned heating circuit."
+        },
+        "843": {
+            "description": "No ModuLine control has been applied for the concerned heating circuit."
+        }
+    },
+    "A22": {
+        "806": {
+            "description": "The room temperature sensor of the ModuLine control of the relevant heating group is defective or gives an unrealistic value."
+        },
+        "816": {
+            "description": "Communication is not possible with the ModuLine control of the respective heating circuit."
+        },
+        "829": {
+            "description": "No heating circuit has been assigned to the ModuLine control, or a heating circuit has been assigned to a ModuLine control that is not present."
+        },
+        "830": {
+            "description": "The battery voltage is too low for the wireless ModuLine control of the respective heating circuit."
+        },
+        "839": {
+            "description": "There is no radio communication with the wireless ModuLine control of the respective heating circuit."
+        },
+        "842": {
+            "description": "No ModuLine control has been applied for the concerned heating circuit."
+        },
+        "843": {
+            "description": "No ModuLine control has been applied for the concerned heating circuit."
+        }
+    },
+    "A23": {
+        "806": {
+            "description": "The room temperature sensor of the ModuLine control of the relevant heating group is defective or gives an unrealistic value."
+        },
+        "816": {
+            "description": "Communication is not possible with the ModuLine control of the respective heating circuit."
+        },
+        "829": {
+            "description": "No heating circuit has been assigned to the ModuLine control, or a heating circuit has been assigned to a ModuLine control that is not present."
+        },
+        "830": {
+            "description": "The battery voltage is too low for the wireless ModuLine control of the respective heating circuit."
+        },
+        "839": {
+            "description": "There is no radio communication with the wireless ModuLine control of the respective heating circuit."
+        },
+        "842": {
+            "description": "No ModuLine control has been applied for the concerned heating circuit."
+        },
+        "843": {
+            "description": "No ModuLine control has been applied for the concerned heating circuit."
+        }
+    },
+    "A24": {
+        "806": {
+            "description": "The room temperature sensor of the ModuLine control of the relevant heating group is defective or gives an unrealistic value."
+        },
+        "816": {
+            "description": "Communication is not possible with the ModuLine control of the respective heating circuit."
+        },
+        "829": {
+            "description": "No heating circuit has been assigned to the ModuLine control, or a heating circuit has been assigned to a ModuLine control that is not present."
+        },
+        "830": {
+            "description": "The battery voltage is too low for the wireless ModuLine control of the respective heating circuit."
+        },
+        "839": {
+            "description": "There is no radio communication with the wireless ModuLine control of the respective heating circuit."
+        },
+        "842": {
+            "description": "No ModuLine control has been applied for the concerned heating circuit."
+        },
+        "843": {
+            "description": "No ModuLine control has been applied for the concerned heating circuit."
+        }
+    },
+    "A32": {
+        "807": {
+            "description": "The flow temperature sensor of the relevant heating circuit is defective or gives an unrealistic value."
+        },
+        "816": {
+            "description": "Communication is not possible with the mixing valve module (MM10) of the relevant heating group."
+        }
+    },
+    "A33": {
+        "807": {
+            "description": "The flow temperature sensor of the relevant heating circuit is defective or gives an unrealistic value."
+        },
+        "816": {
+            "description": "Communication is not possible with the mixing valve module (MM10) of the relevant heating group."
+        }
+    },
+    "A34": {
+        "807": {
+            "description": "The flow temperature sensor of the relevant heating circuit is defective or gives an unrealistic value."
+        },
+        "816": {
+            "description": "Communication is not possible with the mixing valve module (MM10) of the relevant heating group."
+        }
+    },
+    "A51": {
+        "812": {
+            "description": "The solar boiler control is set incorrectly."
+        },
+        "813": {
+            "description": "The collector temperature sensor is defective or gives an unrealistic value."
+        },
+        "814": {
+            "description": "The solar water temperature sensor is defective or gives an unrealistic value."
+        },
+        "816": {
+            "description": "Communication is not possible with the solar water heater module (SM10)."
+        }
+    },
+    "AD1": {
+        "817": {
+            "description": "The air temperature sensor is defective or is showing unrealistic readings."
+        },
+        "818": {
+            "description": "The flow temperature of the boiler rises too little within 30 minutes."
+        },
+        "819": {
+            "description": "Not applicable to gas-fired central heating appliances."
+        },
+        "820": {
+            "description": "Not applicable to gas-fired central heating appliances."
+        }
+    },
+    "H01": {
+        "-13": {
+            "description": "The flue gas temperature is higher than normal."
+        }
+    },
+    "H02": {
+        "-14": {
+            "description": "The fan is spinning slower than normal."
+        }
+    },
+    "H03": {
+        "-15": {
+            "description": "The number of operating hours for the next service has expired."
+        }
+    },
+    "H04": {
+        "-17": {
+            "description": "Maintenance message: The ionization current is lower than normal."
+        }
+    },
+    "H05": {
+        "-18": {
+            "description": "Maintenance message: The ignition voltage is higher than normal."
+        }
+    },
+    "H06": {
+        "-19": {
+            "description": "Maintenance message: The number of restarts to start the burner is more than normal."
+        }
+    },
+    "H07": {
+        "-20": {
+            "description": "The measured central heating water pressure is too low. The power for both central heating and hot water operation is limited."
+        }
+    },
+    "H08": {
+        "-21": {
+            "description": "The set maintenance date has expired. Maintenance required."
+        }
+    },
+    "H11": {
+        "-25": {
+            "description": "The hot water outlet temperature sensor is defective. The function is taken over by the software of the boiler."
+        }
+    },
+    "H12": {
+        "-26": {
+            "description": "The storage temperature sensor is defective. The function is taken over by the software of the boiler."
+        }
+    },
+    "H13": {
+        "-27": {
+            "description": "The set maximum maintenance period has been exceeded. Maintenance required."
+        },
+        "-28": {
+            "description": "Maintenance period is set."
+        }
+    },
+    "H25": {
+        "-40": {
+            "description": "The pressure sensor contacts are open."
+        }
+    },
+    "Hre": {
+        "-48": {
+            "description": "The boiler is being reset."
+        }
+    },
+    "re": {
+        "-4": {
+            "description": "The boiler is being reset."
+        }
+    }
+}

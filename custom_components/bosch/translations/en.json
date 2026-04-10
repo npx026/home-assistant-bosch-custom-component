@@ -1,0 +1,82 @@
+{
+  "config": {
+      "title": "Bosch thermostat",
+      "step": {
+          "choose_type": {
+              "title": "Choose device type.",
+              "data": {
+                  "device_type": "Choose type of your device."
+              }
+          },
+          "http_config": {
+            "title": "Bosch thermostat HTTP config",
+            "data": {
+                "address": "IP address",
+                "access_token": "Access token",
+                "password": "Password"
+            }
+          },
+          "xmpp_config": {
+              "title": "Bosch thermostat XMPP config",
+              "data": {
+                  "address": "Serial number of device",
+                  "access_token": "Access token",
+                  "password": "Password"
+              }
+            },
+          "easycontrol_serial": {
+              "title": "Bosch EasyControl — POINTT API setup (step 1/3)",
+              "description": "Enter the serial number of your EasyControl device (e.g. 101714742). You can find it on the device label or in the Bosch EasyControl app.",
+              "data": {
+                  "address": "Device serial number"
+              }
+          },
+          "easycontrol_oauth": {
+              "title": "Bosch EasyControl — Logging in\u2026",
+              "description": "A browser window has been opened. Please log in with your Bosch SingleKey ID account. This window will close automatically when done."
+          },
+          "easycontrol_claim": {
+              "title": "Bosch EasyControl — POINTT API setup (step 3/3)",
+              "description": "Your device needs to be registered with your Bosch account. Enter the credentials from your device label and the EasyControl app.",
+              "data": {
+                  "access_code": "Access code (from device label)",
+                  "user_password": "Password (set in EasyControl app)"
+              }
+          },
+          "reauth_confirm": {
+              "title": "Bosch EasyControl — Re-authentication required",
+              "description": "Your login session for device **{device_id}** has expired. Click Submit to open the Bosch login page and refresh your credentials.",
+              "data": {}
+          },
+          "protocol": {
+            "title": "Bosch IVT Protocol. HTTP is local. XMPP is cloud!",
+            "data": {
+                "Protocol": "Either http or xmpp"
+            }
+          }
+      },
+      "error": {
+          "service_unavailable": "No service available",
+          "cannot_connect": "Could not connect to the Bosch POINTT API. Please try again."
+      },
+      "abort": {
+          "faulty_credentials": "Bad user credentials or wrong IP",
+          "already_configured": "Controller site is already configured",
+          "unknown": "Unknown reason. Check LOGS.",
+          "oauth_error": "OAuth login failed or was cancelled.",
+          "reauth_successful": "Re-authentication successful.",
+          "cannot_connect": "Could not connect to the Bosch POINTT API."
+      }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Bosch options",
+        "data": {
+          "new_stats_api": "Use new statistic API",
+          "optimistic_mode": "Use optimistic mode for some functions (currently Easycontrol Operation mode set)."
+        }
+      }
+    }
+  }
+}

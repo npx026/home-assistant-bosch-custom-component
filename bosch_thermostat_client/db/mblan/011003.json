@@ -1,0 +1,109 @@
+{
+  "versionFirmware": "01.10.03",
+  "date_format": "%Y-%m-%dT%H:%M:%S",
+  "dhwCircuits": {
+    "hastates": [
+      {
+        "haname": "off",
+        "boschname": ["CombiAutoOff"]
+      },
+      {
+        "haname": "on",
+        "boschname": ["CombiAutoOn"]
+      },
+      {
+        "haname": "performance",
+        "boschname": ["CylinderAuto"]
+      },
+      {
+        "haname": "high_demand",
+        "boschname": ["DHWImmediatelyActive"]
+      },
+      {
+        "haname": "CylinderHolidayAuto",
+        "boschname": ["CylinderHolidayAuto"]
+      },
+      {
+        "haname": "CylinderHolidayOn",
+        "boschname": ["CylinderHolidayOn"]
+      },
+      {
+        "haname": "CylinderHolidayOff",
+        "boschname": ["CylinderHolidayOff"]
+      },
+      {
+        "haname": "CylinderHolidayFixTemp",
+        "boschname": ["CylinderHolidayFixTemp"]
+      },
+      {
+        "haname": "CylinderThermalDisinfection",
+        "boschname": ["CylinderThermalDisinfection"]
+      },
+      {
+        "haname": "FDWatingOrRunning",
+        "boschname": ["FDWatingOrRunning"]
+      }
+    ],
+    "min_ref": "setpoint1",
+    "max_ref": "setpoint2",
+    "schedule": {
+      "program": "/dhwCircuits/{}/dhwTimePrograms/{}",
+      "key_day": "dayOfWeek",
+      "key_setpoint": "setpoint",
+      "key_time": "time",
+      "switch_points": "switchPoints",
+      "default_mode": "absolute"
+    },
+    "mode_to_setpoint": {
+      "CombiAutoOn": {
+        "setpoint": "setpoint2",
+        "type": "manual"
+      },
+      "CombiAutoOff": {
+        "setpoint": null,
+        "type": "off"
+      },
+      "CylinderAuto": {
+        "setpoint": null,
+        "type": "auto"
+      }
+    },
+    "refs": {
+      "current_temp": {
+        "id": "actualTemp",
+        "name": "Room temperature",
+        "type": "regular"
+      },
+      "operation_mode": {
+        "id": "operationMode",
+        "name": "Operation mode",
+        "type": "operation_mode"
+      },
+      "setpoint1": {
+        "id": "currentSetpoint",
+        "name": "DHW level",
+        "type": "setpoint"
+      },
+      "status": {
+        "id": "status",
+        "name": "DHW status",
+        "type": "regular"
+      },
+      "switchPrograms": {
+        "id": "dhwTimePrograms",
+        "name": "Switch Programs",
+        "type": "regular"
+      }
+    },
+    "sensors": {
+      "waterFlow": {
+        "id": "waterFlow",
+        "name": "Water flow"
+      },
+      "workingTime": {
+        "id": "workingTime",
+        "name": "Working time"
+      }
+    }
+  }
+}

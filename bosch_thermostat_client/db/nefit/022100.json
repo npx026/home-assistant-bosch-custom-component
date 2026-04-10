@@ -1,0 +1,121 @@
+{
+    "versionFirmware": "02.21.00",
+    "date_format": "%Y-%m-%dT%H:%M:%S",
+    "heatingCircuits": {
+        "hastates": [
+            {
+                "haname": "off",
+                "boschname": [
+                    "off"
+                ]
+            },
+            {
+                "haname": "heat",
+                "boschname": [
+                    "manual"
+                ]
+            },
+            {
+                "haname": "auto",
+                "boschname": [
+                    "clock"
+                ]
+            }
+        ],
+        "min_ref": "setpoint1",
+        "max_ref": "setpoint1",
+        "schedule": {
+            "program":"/heatingCircuits/{}/switchPrograms/{}",
+            "key_day": "dayOfWeek",
+            "key_setpoint": "setpoint",
+            "key_time": "time",
+            "switch_points": "switchPoints"
+        },
+        "mode_to_setpoint": {
+            "manual": {
+                "setpoint": "setpoint1",
+                "type": "manual"
+            },
+            "clock": {
+                "setpoint": "setpoint1",
+                "type": "auto"
+            }
+        },
+        "refs": {
+            "current_temp": {
+                "id": "roomtemperature",
+                "name": "Room temperature",
+                "type": "regular"
+            },
+            "operation_mode": {
+                "id": "usermode",
+                "name": "Operation mode",
+                "type": "operation_mode"
+            },
+            "setpoint1": {
+                "id": "temperatureRoomManual",
+                "name": "Manual room setpoint",
+                "type": "setpoint"
+            },
+            "activeProgram": {
+                "id": "activeSwitchProgram",
+                "name": "Active Switch Program",
+                "type": "activeProgram"
+            },
+            "status": {
+                "id": "control",
+                "name": "Heating circuit status",
+                "type": "regular"
+            }
+        },
+        "sensors": {}
+    },
+    "sensors": {
+        "outdoor_t1": {
+            "id": "/system/sensors/temperatures/outdoor_t1",
+            "name": "Outdoor temperature"
+        },
+        "dhwa_flow": {
+            "id": "/system/sensors/flow/dhwA/status",
+            "name": "Flow control"
+        },
+        "system_pressure": {
+            "id": "/system/appliance/systemPressure",
+            "name": "System pressure"
+        },
+        "actualPower": {
+            "id": "/system/appliance/actualPower",
+            "name": "Actual power"
+        },
+        "boilermaintenancerequest": {
+            "id": "/system/appliance/boilermaintenancerequest",
+            "name": "Boiler maintenance"
+        },
+        "yearTotal": {
+            "id": "/ecus/rrc/recordings/yearTotal",
+            "name": "Total year usage",
+            "state_class": "total",
+            "device_class": "energy"
+        },
+        "notifications": {
+            "id": "/system/appliance/displaycode",
+            "cause": "/system/appliance/causecode",
+            "name": "Notifications"
+        },
+        "ecus_recording": {
+            "name": "Gas usage",
+            "id": "/ecus/rrc/recordings/gasusage",
+            "pagination": "/ecus/rrc/recordings/gasusagePointer",
+            "state_class": "total",
+            "device_class": "energy"
+        }
+    },
+    "switches": {
+        "summerSwitchOff": {
+            "id": "/ecus/rrc/weatherDependent/summerSwitchOff",
+            "name": "summerSwitchOff",
+            "type": "number",
+            "defaultStep": 1.0
+        }
+    }
+}
